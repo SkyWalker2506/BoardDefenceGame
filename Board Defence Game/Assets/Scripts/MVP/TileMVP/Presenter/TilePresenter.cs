@@ -6,14 +6,9 @@ namespace BoardDefenceGame.MVP.Presenter
 {
     public class TilePresenter : MonoBehaviour
     {
+        private TileModel model = new TileModel();
         [SerializeField] private TileView view;
-        private TileModel model;
 
-        private void Awake()
-        {
-            model = new TileModel();
-        }
-        
         void Start()
         {
             view.SetTileTransform(transform);

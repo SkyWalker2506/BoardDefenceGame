@@ -11,7 +11,7 @@ namespace  BoardDefenceGame.MVP.View
         
         public void SetTileTransform(Transform tr)
         {
-            tileTransform = transform;
+            tileTransform = tr;
         }
         
         public void SetTileOccupied(bool isOccupied)
