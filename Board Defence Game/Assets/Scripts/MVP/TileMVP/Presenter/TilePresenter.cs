@@ -6,7 +6,7 @@ namespace BoardDefenceGame.MVP.Presenter
 {
     public class TilePresenter : MonoBehaviour
     {
-        private TileModel model = new TileModel();
+        private TileModel model = default;
         [SerializeField] private TileView view;
 
         void Start()
