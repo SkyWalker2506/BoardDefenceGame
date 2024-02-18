@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BoardDefenceGame.MVP.Presenter;
 using Observables;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<Vector3> LinePosition{get;} = new();
         public Observable<Vector3> TileOffset { get; } = new();
         public Observable<List<Vector3>> TileLocalPositions { get; } = new();
-        
+        public List<TilePresenter> Tiles { get; set; } = new();
+
         
         public void UpdateTilePositions()
         {
@@ -21,8 +23,6 @@ namespace BoardDefenceGame.MVP.Model
             }
             TileLocalPositions.Value = tilePositions;
         }
-        
-        
         
     }
 }

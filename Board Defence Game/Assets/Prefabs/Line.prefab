@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 1432940301896490204}
+  tilePrefab: {fileID: 8050648912865696442, guid: 68b1e228565a2a34981a0f8bb5c7fec7, type: 3}
 --- !u!114 &1432940301896490204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,4 +59,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e86b8d202384bbba5fb2cea0da52811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 8050648912865696442, guid: 68b1e228565a2a34981a0f8bb5c7fec7, type: 3}
+  LineTransform: {fileID: 0}
