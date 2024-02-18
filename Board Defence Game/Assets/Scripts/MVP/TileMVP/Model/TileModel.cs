@@ -7,10 +7,10 @@ namespace BoardDefenceGame.MVP.Model
     public class TileModel 
     {
         public int TileIndex;
-        public Observable<bool> IsTileOccupied {get;} = new Observable<bool>();
-        public Observable<Vector3> Position{get;} = new Observable<Vector3>();
+        public Observable<Vector3> Position{get;} = default;
+        public Observable<bool> IsTileOccupied {get;} = default;
         
-        List<GameObject> occupyingUnits = new List<GameObject>();
+        List<GameObject> occupyingUnits = default;
         public List<GameObject> OccupyingUnits
         {
             get => occupyingUnits;

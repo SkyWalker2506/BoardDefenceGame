@@ -21,7 +21,7 @@ namespace  BoardDefenceGame.MVP.View
 
         public void SetTilePosition(Vector3 position)
         {
-            tileTransform.position = position;
+            tileTransform.localPosition = position;
         }
 
 
