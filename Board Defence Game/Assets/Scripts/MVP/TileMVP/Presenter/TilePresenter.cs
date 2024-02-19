@@ -17,13 +17,13 @@ namespace BoardDefenceGame.MVP.Presenter
         private void OnEnable()
         {
             model.IsTileOccupied.OnValueChanged += OnTileOccupationChanged;
-            model.Position.OnValueChanged += OnTilePositionChanged;
+            model.TilePosition.OnValueChanged += OnTilePositionChanged;
         }
 
         private void OnDisable()
         {
             model.IsTileOccupied.OnValueChanged -= OnTileOccupationChanged;
-            model.Position.OnValueChanged -= OnTilePositionChanged;
+            model.TilePosition.OnValueChanged -= OnTilePositionChanged;
         }
         
         private void OnTileOccupationChanged(bool isOccupied)
@@ -53,7 +53,7 @@ namespace BoardDefenceGame.MVP.Presenter
         
         public void SetTilePosition(Vector3 position)
         {
-            model.Position.Value = position;
+            model.TilePosition.Value = position;
         }
         
     }    
