@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using BoardDefenceGame.MVP.Model;
 using BoardDefenceGame.MVP.View;
@@ -15,13 +14,6 @@ namespace BoardDefenceGame.MVP.Presenter
         void Awake()
         {
             view.SetLineTransform(transform);
-        }
-
-        private void Start()
-        {
-            model.TileCount.Value = 5;
-            model.LinePosition.Value = new Vector3(0, 0, 0);
-            model.TileOffset.Value = new Vector3(0, 1, 0);
         }
 
         private void OnEnable()
@@ -61,31 +53,41 @@ namespace BoardDefenceGame.MVP.Presenter
             }
         }
         
+        public void SetTileCount(int count)
+        {
+            model.TileCount.Value = count;
+        }
+        
         public void SetLinePosition(Vector3 position)
         {
             model.LinePosition.Value = position;
+        }
+
+        public void SetTileOffset(Vector3 tileOffset)
+        {
+            model.TileOffset.Value = tileOffset;
         }
         
         private void CreateTiles(int tileCount)
         {
             if(tilePrefab == null) return;
-            var Tiles = model.Tiles;
-            if (tileCount > Tiles.Count)
+            var tiles = model.Tiles;
+            if (tileCount > tiles.Count)
             {
                 for (int i = 0; i < tileCount; i++)
                 {
-                    Tiles.Add(Instantiate(tilePrefab, view.LineTransform));
+                    tiles.Add(Instantiate(tilePrefab, view.LineTransform));
                 }
             }
-            else if (tileCount < Tiles.Count)
+            else if (tileCount < tiles.Count)
             {
-                for (int i = Tiles.Count - 1; i >= tileCount; i--)
+                for (int i = tiles.Count - 1; i >= tileCount; i--)
                 {
-                    Destroy(Tiles[i]);
-                    Tiles.RemoveAt(i);
+                    Destroy(tiles[i]);
+                    tiles.RemoveAt(i);
                 }       
             }
-            model.Tiles = Tiles;
+            model.Tiles = tiles;
         }
         
     }

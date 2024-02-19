@@ -12,6 +12,7 @@ namespace BoardDefenceGame.MVP.Presenter
         void Awake()
         {
             view.SetTileTransform(transform);
+            InitializeTile();
         }
 
         private void OnEnable()
@@ -36,9 +37,9 @@ namespace BoardDefenceGame.MVP.Presenter
             view.SetTilePosition(position);
         }
         
-        public void SetTileIndex(int index)
+        void InitializeTile()
         {
-            model.TileIndex = index;
+            view.SetTileOccupied(false);   
         }
         
         public void AddUnit(GameObject unit)
@@ -55,6 +56,7 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             model.TilePosition.Value = position;
         }
+
         
     }    
 }

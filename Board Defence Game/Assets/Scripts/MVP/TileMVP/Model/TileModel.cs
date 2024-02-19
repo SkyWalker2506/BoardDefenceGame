@@ -6,7 +6,6 @@ namespace BoardDefenceGame.MVP.Model
 {
     public class TileModel 
     {
-        public int TileIndex;
         public Observable<Vector3> TilePosition{get;} = new();
         public Observable<bool> IsTileOccupied {get;} = new();
         
