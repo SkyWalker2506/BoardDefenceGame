@@ -42,14 +42,19 @@ namespace BoardDefenceGame.MVP.Presenter
             view.SetTileOccupied(false);   
         }
         
-        public void AddUnit(GameObject unit)
+        public void SetDefenceUnit(DefenceUnitPresenter unit)
         {
-            model.OccupyingUnits.Add(unit);
+            model.OccupyingDefenceUnit = unit;
         }
         
-        public void RemoveUnit(GameObject unit)
+        public void AddEnemyUnit(GameObject unit)
         {
-            model.OccupyingUnits.Remove(unit);
+            model.OccupyingEnemyUnit.Add(unit);
+        }
+        
+        public void RemoveEnemyUnit(GameObject unit)
+        {
+            model.OccupyingEnemyUnit.Remove(unit);
         }
         
         public void SetTilePosition(Vector3 position)

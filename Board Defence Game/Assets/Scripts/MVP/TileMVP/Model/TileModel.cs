@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BoardDefenceGame.MVP.Presenter;
 using Observables;
 using UnityEngine;
 
@@ -9,15 +10,18 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<Vector3> TilePosition{get;} = new();
         public Observable<bool> IsTileOccupied {get;} = new();
         
-        List<GameObject> occupyingUnits = new();
-        public List<GameObject> OccupyingUnits
+        DefenceUnitPresenter occupyingDefenceDefenceUnit = new();
+        public DefenceUnitPresenter OccupyingDefenceUnit
         {
-            get => occupyingUnits;
+            get => occupyingDefenceDefenceUnit;
             set
             {
-                occupyingUnits = value;
-                IsTileOccupied.Value = occupyingUnits.Count > 0;
+                occupyingDefenceDefenceUnit = value;
+                
+                IsTileOccupied.Value = occupyingDefenceDefenceUnit != null;
             }
-        } 
+        }
+        public List<GameObject> OccupyingEnemyUnit { get; } = new();
+
     }
 }
