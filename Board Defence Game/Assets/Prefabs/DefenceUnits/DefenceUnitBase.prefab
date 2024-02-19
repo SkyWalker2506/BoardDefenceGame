@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4883645830449643104}
   - component: {fileID: 968406222696279442}
   m_Layer: 0
-  m_Name: DefenceItemBase
+  m_Name: DefenceUnitBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

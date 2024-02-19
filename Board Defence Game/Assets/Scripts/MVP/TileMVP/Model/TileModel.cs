@@ -10,18 +10,17 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<Vector3> TilePosition{get;} = new();
         public Observable<bool> IsTileOccupied {get;} = new();
         
-        DefenceUnitPresenter occupyingDefenceDefenceUnit = new();
+        DefenceUnitPresenter occupyingDefenceDefenceUnit;
         public DefenceUnitPresenter OccupyingDefenceUnit
         {
             get => occupyingDefenceDefenceUnit;
             set
             {
                 occupyingDefenceDefenceUnit = value;
-                
                 IsTileOccupied.Value = occupyingDefenceDefenceUnit != null;
             }
         }
-        public List<GameObject> OccupyingEnemyUnit { get; } = new();
+        public List<EnemyUnitPresenter> OccupyingEnemyUnit { get; } = new();
 
     }
 }

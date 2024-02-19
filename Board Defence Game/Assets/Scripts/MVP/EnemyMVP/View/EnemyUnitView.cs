@@ -1,9 +1,9 @@
-using UnityEngine;
 using Interface.Unit;
+using UnityEngine;
 
-namespace BoardDefenceGame.MVP.View
+namespace BoardDefenceGame.MVP.Presenter
 {
-    public class DefenceUnitView : MonoBehaviour, IUnitView
+    public class EnemyUnitView : MonoBehaviour, IUnitView
     {
         public Transform UnitTransform { get;private set;}
 
@@ -11,7 +11,6 @@ namespace BoardDefenceGame.MVP.View
         {
             UnitTransform = tr;
         }
-
         public void SetUnitPosition(Vector3 position)
         {
             UnitTransform.position = position;

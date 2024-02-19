@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BoardDefenceGame.MVP.Model;
 using BoardDefenceGame.MVP.View;
 using UnityEngine;
@@ -17,14 +18,14 @@ namespace BoardDefenceGame.MVP.Presenter
 
         private void OnEnable()
         {
-            model.IsTileOccupied.OnValueChanged += OnTileOccupationChanged;
             model.TilePosition.OnValueChanged += OnTilePositionChanged;
+            model.IsTileOccupied.OnValueChanged += OnTileOccupationChanged;
         }
 
         private void OnDisable()
         {
-            model.IsTileOccupied.OnValueChanged -= OnTileOccupationChanged;
             model.TilePosition.OnValueChanged -= OnTilePositionChanged;
+            model.IsTileOccupied.OnValueChanged -= OnTileOccupationChanged;
         }
         
         private void OnTileOccupationChanged(bool isOccupied)
@@ -42,26 +43,29 @@ namespace BoardDefenceGame.MVP.Presenter
             view.SetTileOccupied(false);   
         }
         
+        public void SetTilePosition(Vector3 position)
+        {
+            model.TilePosition.Value = position;
+        }
+        
         public void SetDefenceUnit(DefenceUnitPresenter unit)
         {
             model.OccupyingDefenceUnit = unit;
         }
         
-        public void AddEnemyUnit(GameObject unit)
+        public void AddEnemyUnit(EnemyUnitPresenter unit)
         {
             model.OccupyingEnemyUnit.Add(unit);
         }
         
-        public void RemoveEnemyUnit(GameObject unit)
+        public void RemoveEnemyUnit(EnemyUnitPresenter unit)
         {
             model.OccupyingEnemyUnit.Remove(unit);
         }
-        
-        public void SetTilePosition(Vector3 position)
-        {
-            model.TilePosition.Value = position;
-        }
 
-        
+        public List<EnemyUnitPresenter> GetOccupyingEnemyUnits()
+        {
+            return model.OccupyingEnemyUnit;
+        }
     }    
 }

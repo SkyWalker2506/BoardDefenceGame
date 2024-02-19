@@ -10,23 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 968406222696279442, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: model.<Range>k__BackingField
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 968406222696279442, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: model.<Damage>k__BackingField
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 968406222696279442, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: model.<Interval>k__BackingField
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 968406222696279442, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
-      propertyPath: model.<Direction>k__BackingField
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3145323868307468690, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: m_Name
-      value: DefenceItem 3
+      value: DefenceUnit 1
       objectReference: {fileID: 0}
     - target: {fileID: 4883645830449643104, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7659640582061620269, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7659640582061620269, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: m_Color.g
@@ -78,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7659640582061620269, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: m_Color.r
-      value: 0.02832079
+      value: 0.7169812
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
