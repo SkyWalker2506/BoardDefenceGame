@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 7038353556191378120}
-  linePrefab: {fileID: 5329298427557112050, guid: be97dbb77d38edc4ebdb493c378a42ee, type: 3}
 --- !u!114 &7038353556191378120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,3 +58,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90850bb81e214354918ef87255642b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoardTransform: {fileID: 8203575548594876262}
