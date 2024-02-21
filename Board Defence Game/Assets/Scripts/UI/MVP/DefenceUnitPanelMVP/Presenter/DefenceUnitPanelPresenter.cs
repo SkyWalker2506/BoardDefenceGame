@@ -5,34 +5,77 @@ namespace BoardDefenceGame.UI.MVP.Presenter
 {
     public class DefenceUnitPanelPresenter : MonoBehaviour
     {
-        private DefenceUnitPanelModel model;
+        private DefenceUnitPanelModel model = new ();
         [SerializeField] private DefenceUnitPanelView view;
-        
-        public void InitializePanel(IDefenceUnitPanelData data)
+        [field:SerializeField] public DefenceUnitButtonPresenter ButtonPrefab { get; private set; }
+
+        private void OnEnable()
         {
+            model.UnitButtonData.OnValueChanged += CreateButtons;   
         }
 
-        public void CreateButtons(int buttonCount)
+        private void OnDisable()
+        {
+            model.UnitButtonData.OnValueChanged -= CreateButtons;
+        }
+
+        public void InitializePanel(IDefenceUnitPanelData data)
+        {
+            model.ButtonPrefab.Value = ButtonPrefab;
+            model.UnitButtonData.Value=(UnitButtonData[])data.UnitButtonData;
+        }
+
+        private void CreateButtons(UnitButtonData[] data)
         {
             if(model.ButtonPrefab.Value == null) return;
             var buttons = model.Buttons;
-            if (buttonCount > buttons.Count)
+            foreach (var button in buttons)
             {
-                for (int i = 0; i < buttonCount; i++)
+                button.OnButtonClicked -= OnButtonClicked;
+                Destroy(button.gameObject);
+            }
+            if (data.Length > buttons.Count)
+            {
+                for (int i = buttons.Count; i < data.Length; i++)
                 {
                     buttons.Add(Instantiate(model.ButtonPrefab.Value, view.PanelTransform));
                 }
             }
-            else if (buttonCount < buttons.Count)
+            else if (data.Length < buttons.Count)
             {
-                for (int i = buttons.Count - 1; i >= buttonCount; i--)
+                for (int i = buttons.Count - 1; i >= data.Length; i--)
                 {
                     Destroy(buttons[i]);
                     buttons.RemoveAt(i);
                 }       
             }
             model.Buttons = buttons;
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                model.Buttons[i].InitializeButton(data[i]);
+                model.Buttons[i].OnButtonClicked += OnButtonClicked;
+            }
         }
 
+        private void OnButtonClicked(DefenceUnitButtonPresenter buttonPresenter)
+        {
+            if (model.SelectedButton.Value == buttonPresenter)
+            {
+                model.SelectedButton = new();
+                foreach (var button in model.Buttons)
+                {
+                    button.SetIsSelected(false);
+                }    
+            }
+            else
+            {
+                model.SelectedButton.Value = buttonPresenter;
+                foreach (var button in model.Buttons)
+                {
+                    button.SetIsSelected(button == buttonPresenter);
+                }
+            }
+        }
     }
 }

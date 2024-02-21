@@ -1,3 +1,4 @@
+using BoardDefenceGame.UI.MVP.Presenter;
 using UnityEngine;
 
 namespace BoardDefenceGame.UI.MVP.Model
@@ -7,6 +8,5 @@ namespace BoardDefenceGame.UI.MVP.Model
     {
         [SerializeField] public UnitButtonData[] unitButtonData;
         public IUnitButtonData[] UnitButtonData => unitButtonData;
-
     }
 }

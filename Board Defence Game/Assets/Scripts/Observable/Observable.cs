@@ -1,6 +1,5 @@
 using System;
 
-
 namespace Observables
 {
     public class Observable<T> 
