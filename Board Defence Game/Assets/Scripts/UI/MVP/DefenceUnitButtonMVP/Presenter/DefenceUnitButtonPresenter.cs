@@ -1,4 +1,5 @@
 using System;
+using BoardDefenceGame.MVP.Presenter;
 using BoardDefenceGame.UI.MVP.Model;
 using BoardDefenceGame.UI.MVP.View;
 using UnityEngine;
@@ -54,6 +55,15 @@ namespace BoardDefenceGame.UI.MVP.Presenter
         {
             model.IsSelected.Value = isSelected;
         }
-        
+
+        public DefenceUnitPresenter GetDefenceUnit()
+        {
+            return model.DefenceUnit;
+        }
+
+        public void DecreaseUnitCount()
+        {
+            model.UnitCount.Value--;
+        }
     }
 }

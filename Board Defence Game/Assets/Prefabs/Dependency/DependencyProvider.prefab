@@ -58,3 +58,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardData: {fileID: 11400000, guid: 9b4a5f1c7a4b0ce4dbe7e749c20d9386, type: 2}
+  defenceUnitPanelData: {fileID: 11400000, guid: ddd0da6062a3994488fb5c9328930130, type: 2}

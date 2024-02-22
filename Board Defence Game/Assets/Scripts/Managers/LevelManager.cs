@@ -5,7 +5,7 @@ using BoardDefenceGame.UI.MVP.Presenter;
 using DependencyInjection;
 using UnityEngine;
 
-namespace BoardDefenceGame.Managers
+namespace BoardDefenceGame.Manager
 {
     public class LevelManager : MonoBehaviour
     {

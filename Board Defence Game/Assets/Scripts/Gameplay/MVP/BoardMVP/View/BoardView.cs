@@ -9,7 +9,7 @@ namespace BoardDefenceGame.MVP.View
 
         public void SetBoardPosition(Vector3 boardPosition)
         {
-            BoardTransform.localPosition = boardPosition;
+            BoardTransform.position = boardPosition;
         }
 
         public void UpdateLinePosition(LinePresenter line, Vector3 linePosition)

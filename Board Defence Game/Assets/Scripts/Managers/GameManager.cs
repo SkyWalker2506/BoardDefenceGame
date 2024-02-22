@@ -1,7 +1,7 @@
 using DependencyInjection;
 using UnityEngine;
 
-namespace BoardDefenceGame.Managers
+namespace BoardDefenceGame.Manager
 {
     [DefaultExecutionOrder(1000)]
     public class GameManager : MonoBehaviour

@@ -1,4 +1,4 @@
-using BoardDefenceGame.Managers;
+using BoardDefenceGame.Manager;
 using BoardDefenceGame.MVP.Model;
 using BoardDefenceGame.MVP.Presenter;
 using BoardDefenceGame.UI.MVP.Model;

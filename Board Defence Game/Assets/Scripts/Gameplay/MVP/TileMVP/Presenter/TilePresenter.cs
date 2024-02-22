@@ -28,6 +28,11 @@ namespace BoardDefenceGame.MVP.Presenter
             model.IsTileOccupied.OnValueChanged -= OnTileOccupationChanged;
         }
         
+        void InitializeTile()
+        {
+            view.SetTileOccupied(false);   
+        }
+        
         private void OnTileOccupationChanged(bool isOccupied)
         {
             view.SetTileOccupied(isOccupied);
@@ -38,11 +43,6 @@ namespace BoardDefenceGame.MVP.Presenter
             view.SetTilePosition(position);
         }
         
-        void InitializeTile()
-        {
-            view.SetTileOccupied(false);   
-        }
-        
         public void SetTilePosition(Vector3 position)
         {
             model.TilePosition.Value = position;
@@ -51,6 +51,11 @@ namespace BoardDefenceGame.MVP.Presenter
         public void SetDefenceUnit(DefenceUnitPresenter unit)
         {
             model.OccupyingDefenceUnit = unit;
+        }
+        
+        public bool IsTileOccupied()
+        {
+            return model.IsTileOccupied.Value;
         }
         
         public void AddEnemyUnit(EnemyUnitPresenter unit)
@@ -66,6 +71,11 @@ namespace BoardDefenceGame.MVP.Presenter
         public List<EnemyUnitPresenter> GetOccupyingEnemyUnits()
         {
             return model.OccupyingEnemyUnit;
+        }
+
+        public Vector3 GetTilePosition()
+        {
+            return model.TilePosition.Value;
         }
     }    
 }

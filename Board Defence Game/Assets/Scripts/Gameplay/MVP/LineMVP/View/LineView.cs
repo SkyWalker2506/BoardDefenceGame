@@ -9,12 +9,12 @@ namespace BoardDefenceGame.MVP.View
         
         public void SetLinePosition(Vector3 linePosition)
         {
-            LineTransform.localPosition = linePosition;
+            LineTransform.position = linePosition;
         }
 
         public void SetTilePosition(TilePresenter tilePresenter, Vector3 position)
         {
-            tilePresenter.SetTilePosition(position);
+            tilePresenter.SetTilePosition(LineTransform.position + position);
         }
     }
 }

@@ -1,3 +1,4 @@
+using BoardDefenceGame.MVP.Presenter;
 using BoardDefenceGame.UI.MVP.Model;
 using UnityEngine;
 
@@ -62,11 +63,7 @@ namespace BoardDefenceGame.UI.MVP.Presenter
         {
             if (model.SelectedButton.Value == buttonPresenter)
             {
-                model.SelectedButton = new();
-                foreach (var button in model.Buttons)
-                {
-                    button.SetIsSelected(false);
-                }    
+                DeselectAll();
             }
             else
             {
@@ -76,6 +73,31 @@ namespace BoardDefenceGame.UI.MVP.Presenter
                     button.SetIsSelected(button == buttonPresenter);
                 }
             }
+        }
+
+        public bool IsAnySelected()
+        {
+            return model.SelectedButton.Value != null;
+        }
+
+        public DefenceUnitPresenter GetSelectedDefenceUnit()
+        {
+            return model.SelectedButton.Value.GetDefenceUnit();
+        }
+
+        public void OnSelectedUnitPlaced()
+        {
+            model.SelectedButton.Value.DecreaseUnitCount();
+            DeselectAll();
+        }
+        
+        public void DeselectAll()
+        {
+            model.SelectedButton = new();
+            foreach (var button in model.Buttons)
+            {
+                button.SetIsSelected(false);
+            } 
         }
     }
 }
