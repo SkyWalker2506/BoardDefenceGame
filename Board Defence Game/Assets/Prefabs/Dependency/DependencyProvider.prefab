@@ -58,4 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardData: {fileID: 11400000, guid: 9b4a5f1c7a4b0ce4dbe7e749c20d9386, type: 2}
-  defenceUnitPanelData: {fileID: 11400000, guid: ddd0da6062a3994488fb5c9328930130, type: 2}
+  levelData:
+  - {fileID: 11400000, guid: 43b77df0d59ea4f45a72e1bff48b9609, type: 2}
+  - {fileID: 11400000, guid: 804e7bfd6c1769d4185f51995364126e, type: 2}
+  - {fileID: 11400000, guid: c5b0ce1ce15a73f4aa2a3b4e40bc4067, type: 2}

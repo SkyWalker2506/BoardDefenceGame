@@ -8,6 +8,7 @@ namespace BoardDefenceGame.Manager
     public class DefenceUnitPlacementManager : MonoBehaviour
     {
         [Inject] private DefenceUnitPanelPresenter defenceUnitPanelPresenter;
+        [Inject] private BoardPresenter boardPresenter;
 
         private void Update()
         {
@@ -19,11 +20,9 @@ namespace BoardDefenceGame.Manager
             {
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
                 {
-                    Debug.Log(hit.collider.gameObject.name);
                     if (hit.collider.TryGetComponent(out TilePresenter tile))
                     {
-                        Debug.Log(tile.name);
-                        if(tile.IsTileOccupied())
+                        if(!tile.IsDefenceUnitPlaceable())
                         {
                             return;
                         }
@@ -32,10 +31,6 @@ namespace BoardDefenceGame.Manager
                         CreateDefenceUnit(defenceUnit, tile.GetTilePosition());
                         defenceUnitPanelPresenter.OnSelectedUnitPlaced();
                     }
-                }
-                else
-                {
-                    Debug.Log("No hit");
                 }
             }
         }

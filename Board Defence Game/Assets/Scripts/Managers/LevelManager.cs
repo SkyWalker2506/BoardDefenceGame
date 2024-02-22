@@ -1,6 +1,6 @@
-using BoardDefenceGame.MVP.Model;
+using BoardDefenceGame.Data;
+using BoardDefenceGame.MVP.Interface.Model;
 using BoardDefenceGame.MVP.Presenter;
-using BoardDefenceGame.UI.MVP.Model;
 using BoardDefenceGame.UI.MVP.Presenter;
 using DependencyInjection;
 using UnityEngine;
@@ -12,11 +12,11 @@ namespace BoardDefenceGame.Manager
         [Inject] private BoardPresenter boardPresenter;
         [Inject] private IBoardData boardData;
         [Inject] private DefenceUnitPanelPresenter defenceUnitPanelPresenter;
-        [Inject] private IDefenceUnitPanelData defenceUnitPanelData;
-        public void InitializeLevel()
+        [Inject] private LevelData[] levelData;
+        public void InitializeLevel(int level)
         {
             boardPresenter.InitializeBoard(boardData);
-            defenceUnitPanelPresenter.InitializePanel(defenceUnitPanelData);
+            defenceUnitPanelPresenter.InitializePanel(levelData[level-1].DefenceUnitData);
         }
             
     }

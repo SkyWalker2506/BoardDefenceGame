@@ -9,12 +9,13 @@ namespace BoardDefenceGame.MVP.Model
     {
         public Observable<TilePresenter> TilePrefab { get; } = new();
         public Observable<int> TileCount { get; } = new();
+        public Observable<int> MaxDefencePlaceableTileIndex { get; }  = new();
         public Observable<Vector3> LinePosition{get;} = new();
         public Observable<Vector3> TileOffset { get; } = new();
         public Observable<List<Vector3>> TileLocalPositions { get; } = new();
         public List<TilePresenter> Tiles { get; set; } = new();
 
-        
+
         public void UpdateTilePositions()
         {
             List<Vector3> tilePositions = new List<Vector3>();

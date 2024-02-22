@@ -1,5 +1,5 @@
+using BoardDefenceGame.MVP.Interface.Unit;
 using BoardDefenceGame.MVP.Model;
-using Interface.Unit;
 using UnityEngine;
 
 namespace BoardDefenceGame.MVP.Presenter

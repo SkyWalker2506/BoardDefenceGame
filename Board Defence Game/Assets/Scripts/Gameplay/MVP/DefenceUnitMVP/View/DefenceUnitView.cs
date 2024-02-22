@@ -1,5 +1,5 @@
+using BoardDefenceGame.MVP.Interface.Unit;
 using UnityEngine;
-using Interface.Unit;
 
 namespace BoardDefenceGame.MVP.View
 {

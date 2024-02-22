@@ -15,14 +15,18 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             model.TilePrefab.OnValueChanged += OnTilePrefabChanged;
             model.TileCount.OnValueChanged += OnTileCountChanged;
+            model.MaxDefencePlaceableTileIndex.OnValueChanged += OnMaxDefencePlaceableTileIndexChanged;
             model.LinePosition.OnValueChanged += OnLinePositionChanged;
             model.TileOffset.OnValueChanged += OnTileOffsetChanged;
             model.TileLocalPositions.OnValueChanged += OnTilePositionsChanged;
         }
-        
+
+
         private void OnDisable()
         {
+            model.TilePrefab.OnValueChanged -= OnTilePrefabChanged;
             model.TileCount.OnValueChanged -= OnTileCountChanged;
+            model.MaxDefencePlaceableTileIndex.OnValueChanged -= OnMaxDefencePlaceableTileIndexChanged;
             model.LinePosition.OnValueChanged -= OnLinePositionChanged;
             model.TileOffset.OnValueChanged -= OnTileOffsetChanged;
             model.TileLocalPositions.OnValueChanged -= OnTilePositionsChanged;
@@ -43,6 +47,16 @@ namespace BoardDefenceGame.MVP.Presenter
             CreateTiles(tileCount);
             model.UpdateTilePositions();
         }
+        
+        private void OnMaxDefencePlaceableTileIndexChanged(int maxTileIndex)
+        {
+            for (int i = 0; i < model.TileCount.Value; i++)
+            {
+                model.Tiles[i].SetDefencePlaceable(i < maxTileIndex);
+            }
+        }
+        
+
         private void OnLinePositionChanged(Vector3 linePosition)
         {
             view.SetLinePosition(linePosition);
@@ -101,5 +115,9 @@ namespace BoardDefenceGame.MVP.Presenter
             model.Tiles = tiles;
         }
 
+        public void SetMaxDefencePlaceableTileIndex(int maxTileIndex)
+        {
+            model.MaxDefencePlaceableTileIndex.Value = maxTileIndex;
+        }
     }
 }

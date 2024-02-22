@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <LinePrefab>k__BackingField: {fileID: 5329298427557112050, guid: be97dbb77d38edc4ebdb493c378a42ee, type: 3}
   <TilePrefab>k__BackingField: {fileID: 8050648912865696442, guid: 68b1e228565a2a34981a0f8bb5c7fec7, type: 3}
+  <MaxDefencePlaceableTileIndex>k__BackingField: 4
   <BoardPosition>k__BackingField: {x: 0, y: 0, z: 0}
   <LineOffset>k__BackingField: {x: 1, y: 0, z: 0}
   <LineCount>k__BackingField: 4

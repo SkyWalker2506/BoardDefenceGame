@@ -53,9 +53,9 @@ namespace BoardDefenceGame.MVP.Presenter
             model.OccupyingDefenceUnit = unit;
         }
         
-        public bool IsTileOccupied()
+        public bool IsDefenceUnitPlaceable()
         {
-            return model.IsTileOccupied.Value;
+            return model.IsDefenceUnitPlaceable && !model.IsTileOccupied.Value;
         }
         
         public void AddEnemyUnit(EnemyUnitPresenter unit)
@@ -77,5 +77,11 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             return model.TilePosition.Value;
         }
+
+        public void SetDefencePlaceable(bool isPlaceable)
+        {
+            model.IsDefenceUnitPlaceable = isPlaceable;
+        }
+
     }    
 }

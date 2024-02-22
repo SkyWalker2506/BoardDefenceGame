@@ -16,5 +16,6 @@ namespace BoardDefenceGame.MVP.View
         {
             line.SetLinePosition(linePosition);
         }
+        
     }
 }

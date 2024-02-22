@@ -48,6 +48,7 @@ MonoBehaviour:
   model:
     <Health>k__BackingField: 0
     <Speed>k__BackingField: 0
+  view: {fileID: 6436836730120546143}
 --- !u!1 &8887187204593940723
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BoardDefenceGame.MVP.Interface.Model;
 using BoardDefenceGame.MVP.Model;
 using BoardDefenceGame.MVP.View;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             model.LinePrefab.OnValueChanged += OnLinePrefabChanged;
             model.TilePrefab.OnValueChanged += OnTilePrefabChanged;
+            model.MaxDefencePlaceableTileIndex.OnValueChanged += OnMaxDefencePlaceableTileIndexChanged;
             model.TileCount.OnValueChanged += OnTileCountChanged;
             model.TileOffset.OnValueChanged += OnTileOffsetChanged;
             model.LineCount.OnValueChanged += OnLineCountChanged;
@@ -22,11 +24,12 @@ namespace BoardDefenceGame.MVP.Presenter
             model.LineOffset.OnValueChanged += OnLineOffsetChanged;
             model.LineLocalPositions.OnValueChanged += OnLinePositionsChanged;
         }
-        
+
         private void OnDisable()
         {
             model.LinePrefab.OnValueChanged -= OnLinePrefabChanged;
             model.TilePrefab.OnValueChanged -= OnTilePrefabChanged;
+            model.MaxDefencePlaceableTileIndex.OnValueChanged -= OnMaxDefencePlaceableTileIndexChanged;
             model.TileCount.OnValueChanged -= OnTileCountChanged;
             model.TileOffset.OnValueChanged -= OnTileOffsetChanged;
             model.LineCount.OnValueChanged -= OnLineCountChanged;
@@ -44,6 +47,7 @@ namespace BoardDefenceGame.MVP.Presenter
             model.LineCount.Value = data.LineCount;
             model.TileOffset.Value = data.TileOffset;
             model.TileCount.Value = data.TileCount;
+            model.MaxDefencePlaceableTileIndex.Value = data.MaxDefencePlaceableTileIndex;
         }
         
         private void OnLinePrefabChanged(LinePresenter linePrefab)
@@ -64,6 +68,14 @@ namespace BoardDefenceGame.MVP.Presenter
             }
         }
         
+        private void OnMaxDefencePlaceableTileIndexChanged(int maxTileIndex)
+        {
+            foreach (var line in model.Lines)
+            {
+                line.SetMaxDefencePlaceableTileIndex(maxTileIndex);
+            }
+        }
+        
         private void OnTileCountChanged(int tileCount)
         {
             foreach (var line in model.Lines)
@@ -71,6 +83,7 @@ namespace BoardDefenceGame.MVP.Presenter
                 line.SetTileCount(tileCount);
             }
         }
+        
 
         private void OnTileOffsetChanged(Vector3 obj)
         {
@@ -127,6 +140,5 @@ namespace BoardDefenceGame.MVP.Presenter
             model.Lines = lines;
         }
 
-        
     }
 }

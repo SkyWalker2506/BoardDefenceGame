@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Interface.Unit
+namespace BoardDefenceGame.MVP.Interface.Unit
 {
     public interface IUnitPresenter
     {

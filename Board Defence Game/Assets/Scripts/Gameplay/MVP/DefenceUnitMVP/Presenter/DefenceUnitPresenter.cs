@@ -1,6 +1,6 @@
+using BoardDefenceGame.MVP.Interface.Unit;
 using BoardDefenceGame.MVP.Model;
 using BoardDefenceGame.MVP.View;
-using Interface.Unit;
 using UnityEngine;
 
 

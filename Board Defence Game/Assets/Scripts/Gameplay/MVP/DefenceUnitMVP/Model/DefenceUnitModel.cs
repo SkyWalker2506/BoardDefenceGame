@@ -1,5 +1,5 @@
 using System;
-using Interface.Unit;
+using BoardDefenceGame.MVP.Interface.Unit;
 using Observables;
 using UnityEngine;
 
@@ -17,7 +17,6 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<Vector3> Position{get;} = new();
         public float LastAttackTime{ get; set; }
         public bool CanAttack => LastAttackTime + Interval <= Time.time;
-        
         
     }
     

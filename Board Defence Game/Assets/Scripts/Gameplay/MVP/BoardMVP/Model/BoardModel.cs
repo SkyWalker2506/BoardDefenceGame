@@ -10,6 +10,7 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<LinePresenter> LinePrefab { get; } = new();
         public Observable<TilePresenter> TilePrefab { get; } = new();
         public Observable<int> TileCount { get; } = new();
+        public Observable<int> MaxDefencePlaceableTileIndex { get; }  = new();
         public Observable<Vector3> TileOffset { get; } = new();
         public Observable<int> LineCount { get; } = new();
         public Observable<Vector3> BoardPosition{get;} = new();

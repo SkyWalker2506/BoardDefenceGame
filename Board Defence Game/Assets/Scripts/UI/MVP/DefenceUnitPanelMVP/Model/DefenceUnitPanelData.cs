@@ -1,4 +1,3 @@
-using BoardDefenceGame.UI.MVP.Presenter;
 using UnityEngine;
 
 namespace BoardDefenceGame.UI.MVP.Model

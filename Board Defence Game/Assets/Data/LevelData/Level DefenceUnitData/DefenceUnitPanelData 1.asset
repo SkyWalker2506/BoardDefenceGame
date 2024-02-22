@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90ce335d4e3946e0b15c6d5e4dad2c6d, type: 3}
-  m_Name: Level 1 DefenceUnitPanelData
+  m_Name: DefenceUnitPanelData 1
   m_EditorClassIdentifier: 
   unitButtonData:
   - <DefenceUnit>k__BackingField: {fileID: 8759077170279464600, guid: c811b1cef633f8f489b47ae63db452a7, type: 3}

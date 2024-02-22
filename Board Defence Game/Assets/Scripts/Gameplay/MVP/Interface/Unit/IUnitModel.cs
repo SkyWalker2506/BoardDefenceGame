@@ -1,7 +1,7 @@
 using Observables;
 using UnityEngine;
 
-namespace Interface.Unit
+namespace BoardDefenceGame.MVP.Interface.Unit
 {
     public interface IUnitModel
     {
