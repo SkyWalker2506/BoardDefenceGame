@@ -37,7 +37,8 @@ namespace BoardDefenceGame.Manager
 
         private void CreateDefenceUnit(DefenceUnitPresenter defenceUnit, Vector3 tilePosition)
         {
-            Instantiate(defenceUnit, tilePosition, Quaternion.identity);
+            var unit= Instantiate(defenceUnit);
+            unit.SetPosition(tilePosition);
         }
     }
 }

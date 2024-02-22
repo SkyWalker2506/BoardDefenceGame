@@ -15,6 +15,7 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<Vector3> TileOffset { get; } = new();
         public Observable<List<Vector3>> TileLocalPositions { get; } = new();
         public List<TilePresenter> Tiles { get; set; } = new();
+        public Vector3 FinishLinePosition => LinePosition.Value - TileOffset.Value;
 
 
         public void UpdateTilePositions()

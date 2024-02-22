@@ -6,6 +6,7 @@ namespace BoardDefenceGame.MVP.Interface.Unit
     {
         IUnitModel Model { get; }
         void OnPositionChanged(Vector3 position);
+        void SetPosition(Vector3 position);
         void SetIndex(int lineIndex, int tileIndex);
         int GetLineIndex();
         int GetTileIndex();

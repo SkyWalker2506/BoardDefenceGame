@@ -11,7 +11,6 @@ namespace BoardDefenceGame.MVP.Presenter
         [SerializeField] private BoardView view;
         private BoardModel model = new();
 
-        
         private void OnEnable()
         {
             model.LinePrefab.OnValueChanged += OnLinePrefabChanged;
@@ -145,6 +144,11 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             int index = Random.Range(0, model.Lines.Count);
             return model.Lines[index];
+        }
+
+        public LinePresenter GetLine(int lineIndex)
+        {
+            return model.Lines[lineIndex];
         }
     }
 }

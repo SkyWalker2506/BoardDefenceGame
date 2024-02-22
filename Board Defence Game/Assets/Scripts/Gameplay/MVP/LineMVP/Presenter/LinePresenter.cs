@@ -131,5 +131,16 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             return model.Tiles[model.TileCount.Value-1];
         }
+
+        public TilePresenter GetTile(int getTileIndex)
+        {
+            return model.Tiles[getTileIndex];
+        }
+
+
+        public Vector3 GetFinishLinePosition()
+        {
+            return model.FinishLinePosition;
+        }
     }
 }

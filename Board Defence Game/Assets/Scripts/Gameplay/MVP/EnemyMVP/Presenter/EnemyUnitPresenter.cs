@@ -1,3 +1,4 @@
+using System;
 using BoardDefenceGame.MVP.Interface.Unit;
 using BoardDefenceGame.MVP.Model;
 using UnityEngine;
@@ -10,7 +11,11 @@ namespace BoardDefenceGame.MVP.Presenter
         [SerializeField] private EnemyUnitView view;
         public IUnitModel Model => model;
 
-        
+        private void Awake()
+        {
+            view.SetUnitTransform(transform);
+        }
+
         private void OnEnable()
         {
             model.Position.OnValueChanged += OnPositionChanged;
@@ -24,6 +29,11 @@ namespace BoardDefenceGame.MVP.Presenter
         public void OnPositionChanged(Vector3 position)
         {
             view.SetUnitPosition(position);
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            model.Position.Value = position;
         }
 
         public void SetIndex(int lineIndex, int tileIndex)
@@ -41,5 +51,11 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             return model.TileIndex;
         }
+        
+        public float GetMovementSpeed()
+        {
+            return model.Speed;
+        }
+
     }
 }
