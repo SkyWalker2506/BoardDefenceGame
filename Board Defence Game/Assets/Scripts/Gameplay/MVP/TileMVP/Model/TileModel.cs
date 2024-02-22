@@ -10,7 +10,8 @@ namespace BoardDefenceGame.MVP.Model
         public Observable<Vector3> TilePosition{get;} = new();
         public Observable<bool> IsTileOccupied {get;} = new();
         public bool IsDefenceUnitPlaceable { get; set; }
-        
+        public int TileIndex { get; set; }
+        public int LineIndex { get; set; }
         DefenceUnitPresenter occupyingDefenceDefenceUnit;
         public DefenceUnitPresenter OccupyingDefenceUnit
         {

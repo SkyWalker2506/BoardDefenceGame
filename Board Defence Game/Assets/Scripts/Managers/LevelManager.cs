@@ -13,10 +13,13 @@ namespace BoardDefenceGame.Manager
         [Inject] private IBoardData boardData;
         [Inject] private DefenceUnitPanelPresenter defenceUnitPanelPresenter;
         [Inject] private LevelData[] levelData;
+        [Inject] private EnemyUnitPlacementManager enemyUnitPlacementManager;
+        
         public void InitializeLevel(int level)
         {
             boardPresenter.InitializeBoard(boardData);
             defenceUnitPanelPresenter.InitializePanel(levelData[level-1].DefenceUnitData);
+            enemyUnitPlacementManager.InitializeEnemyUnits(levelData[level-1].EnemyUnitData.GetEnemyData());
         }
             
     }

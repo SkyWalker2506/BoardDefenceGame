@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae615a6fe0e94f07aa562f6d58437552, type: 3}
   m_Name: LevelData 3
   m_EditorClassIdentifier: 
-  EnemyUnitData: {fileID: 11400000, guid: ad843b7bd1d66484f8722428c4b6ea11, type: 2}
+  EnemyUnitData: {fileID: 11400000, guid: 50584882a9fea50448c98370787147c4, type: 2}
   DefenceUnitData: {fileID: 11400000, guid: 35b2317d90e55534ca0280b1d7567a6d, type: 2}

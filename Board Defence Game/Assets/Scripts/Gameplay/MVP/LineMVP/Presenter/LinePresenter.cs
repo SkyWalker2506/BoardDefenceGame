@@ -82,6 +82,11 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             model.TileCount.Value = count;
         }
+
+        public void SetLineIndex(int index)
+        {
+            model.LineIndex = index;
+        }
         
         public void SetLinePosition(Vector3 position)
         {
@@ -101,7 +106,9 @@ namespace BoardDefenceGame.MVP.Presenter
             {
                 for (int i = 0; i < tileCount; i++)
                 {
-                    tiles.Add(Instantiate(model.TilePrefab.Value, view.LineTransform));
+                    var tile = Instantiate(model.TilePrefab.Value, view.LineTransform);
+                    tile.SetTileIndex(model.LineIndex, i);
+                    tiles.Add(tile);
                 }
             }
             else if (tileCount < tiles.Count)
@@ -118,6 +125,11 @@ namespace BoardDefenceGame.MVP.Presenter
         public void SetMaxDefencePlaceableTileIndex(int maxTileIndex)
         {
             model.MaxDefencePlaceableTileIndex.Value = maxTileIndex;
+        }
+
+        public TilePresenter GetLastTile()
+        {
+            return model.Tiles[model.TileCount.Value-1];
         }
     }
 }

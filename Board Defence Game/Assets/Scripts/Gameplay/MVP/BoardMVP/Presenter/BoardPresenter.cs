@@ -83,7 +83,6 @@ namespace BoardDefenceGame.MVP.Presenter
                 line.SetTileCount(tileCount);
             }
         }
-        
 
         private void OnTileOffsetChanged(Vector3 obj)
         {
@@ -125,7 +124,9 @@ namespace BoardDefenceGame.MVP.Presenter
             {
                 for (int i = 0; i < tileCount; i++)
                 {
-                    lines.Add(Instantiate(model.LinePrefab.Value, view.BoardTransform));
+                    var line = Instantiate(model.LinePrefab.Value, view.BoardTransform);
+                    line.SetLineIndex(i);
+                    lines.Add(line);
                     lines[i].SetTilePrefab(model.TilePrefab.Value);
                 }
             }
@@ -140,5 +141,10 @@ namespace BoardDefenceGame.MVP.Presenter
             model.Lines = lines;
         }
 
+        public LinePresenter GetRandomLine()
+        {
+            int index = Random.Range(0, model.Lines.Count);
+            return model.Lines[index];
+        }
     }
 }

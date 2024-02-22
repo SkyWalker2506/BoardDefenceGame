@@ -43,6 +43,12 @@ namespace BoardDefenceGame.MVP.Presenter
             view.SetTilePosition(position);
         }
         
+        public void SetTileIndex(int lineIndex, int tileIndex)
+        {
+            model.TileIndex = tileIndex;
+            model.LineIndex = lineIndex;
+        }
+        
         public void SetTilePosition(Vector3 position)
         {
             model.TilePosition.Value = position;
@@ -83,5 +89,14 @@ namespace BoardDefenceGame.MVP.Presenter
             model.IsDefenceUnitPlaceable = isPlaceable;
         }
 
+        public int GetLineIndex()
+        {
+            return model.LineIndex;
+        }
+        
+        public int GetTileIndex()
+        {
+            return model.TileIndex;
+        }
     }    
 }

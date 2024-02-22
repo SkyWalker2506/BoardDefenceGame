@@ -16,8 +16,9 @@ namespace BoardDefenceGame.DependencyInjection
 
         [Provide] private LevelManager ProvideLevelManager() => FindObjectOfType<LevelManager>();
         [Provide] private BoardPresenter ProvideBoardPresenter() => FindObjectOfType<BoardPresenter>();
-        [Provide] private IBoardData ProvideBoard() => boardData;
         [Provide] private DefenceUnitPanelPresenter ProvideDefenceUnitPanelPresenter() => FindObjectOfType<DefenceUnitPanelPresenter>();
+        [Provide] private EnemyUnitPlacementManager ProvideEnemyUnitPlacementManager() => FindObjectOfType<EnemyUnitPlacementManager>();
+        [Provide] private IBoardData ProvideBoard() => boardData;
         [Provide] private LevelData[] ProvideLevelData() => levelData;
     }
 }

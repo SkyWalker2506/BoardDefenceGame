@@ -7,6 +7,7 @@ namespace BoardDefenceGame.MVP.Model
 {
     public class LineModel
     {
+        public int LineIndex { get; set; }
         public Observable<TilePresenter> TilePrefab { get; } = new();
         public Observable<int> TileCount { get; } = new();
         public Observable<int> MaxDefencePlaceableTileIndex { get; }  = new();
