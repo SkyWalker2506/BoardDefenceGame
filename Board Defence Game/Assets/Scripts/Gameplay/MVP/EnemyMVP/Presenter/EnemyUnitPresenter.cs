@@ -7,25 +7,40 @@ namespace BoardDefenceGame.MVP.Presenter
 {
     public class EnemyUnitPresenter : MonoBehaviour, IUnitPresenter
     {
-        [SerializeField]  private EnemyUnitModel model;
+        [SerializeField] private EnemyUnitModel model;
         [SerializeField] private EnemyUnitView view;
         public IUnitModel Model => model;
+        public Action<EnemyUnitPresenter> OnEnemyUnitDead { get; set; }
 
         private void Awake()
         {
             view.SetUnitTransform(transform);
+            model.CurrentHealth.Value = model.Health;
         }
 
         private void OnEnable()
         {
             model.Position.OnValueChanged += OnPositionChanged;
+            model.CurrentHealth.OnValueChanged += OnCurrentHealthChanged;
         }
 
         private void OnDisable()
         {
             model.Position.OnValueChanged -= OnPositionChanged;
+            model.CurrentHealth.OnValueChanged -= OnCurrentHealthChanged;
         }
 
+        private void OnCurrentHealthChanged(float currentHealth)
+        {
+            model.CurrentHealth.Value = currentHealth;
+            view.SetHealthBar(model.CurrentHealth.Value / model.Health);
+            if (model.CurrentHealth.Value  <= 0)
+            {
+                OnEnemyUnitDead?.Invoke(this);
+                view.DestroyUnit();
+            }
+        }
+        
         public void OnPositionChanged(Vector3 position)
         {
             view.SetUnitPosition(position);
@@ -55,6 +70,11 @@ namespace BoardDefenceGame.MVP.Presenter
         public float GetMovementSpeed()
         {
             return model.Speed;
+        }
+        
+        public void TakeDamage(float damage)
+        {
+            model.CurrentHealth.Value -= damage;
         }
 
     }

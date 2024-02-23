@@ -15,6 +15,7 @@ namespace BoardDefenceGame.MVP.Presenter
         void Awake()
         {
             view.SetUnitTransform(transform);
+            model.LastAttackTime = -model.Interval;
         }
 
         private void OnEnable()
@@ -63,5 +64,19 @@ namespace BoardDefenceGame.MVP.Presenter
             return false;
         }
 
+        public float GetDamageValue()
+        {
+            return model.Damage;
+        }
+
+        public int GetAttackRange()
+        {
+            return model.Range;
+        }
+
+        public Direction GetDirection()
+        {
+            return model.Direction;
+        }
     }
 }

@@ -142,5 +142,10 @@ namespace BoardDefenceGame.MVP.Presenter
         {
             return model.FinishLinePosition;
         }
+
+        public int GetTileCount()
+        {
+            return model.TileCount.Value;
+        }
     }
 }

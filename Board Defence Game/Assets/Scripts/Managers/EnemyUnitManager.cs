@@ -8,13 +8,13 @@ namespace BoardDefenceGame.Manager
 {
     public class EnemyUnitManager : MonoBehaviour
     {
+        [SerializeField] private float enemyCreateInterval = 1;
+
         [Inject] private BoardPresenter boardPresenter;
-        private List<IEnemyData> enemies;
+        private List<IEnemyData> enemies = new();
         private List<EnemyMoveData> movableEnemies = new ();
-        
         public void InitializeEnemyUnits(IEnemyData[] enemyData)
         {
-            enemies = new List<IEnemyData>();
             foreach (var data in enemyData)
             {
                 if (data.EnemyUnitCount > 0)
@@ -23,7 +23,7 @@ namespace BoardDefenceGame.Manager
                 }
             }
 
-            InvokeRepeating(nameof(CreateEnemyUnits), 1, 1);
+            InvokeRepeating(nameof(CreateEnemyUnits), enemyCreateInterval , enemyCreateInterval);
         }
 
         private void Update()
@@ -32,7 +32,11 @@ namespace BoardDefenceGame.Manager
             {
                 MoveEnemyToNextTile(movableEnemy);
             }
-            movableEnemies.RemoveAll(enemy => enemy.IsMovementEnded);
+            var enemyData= movableEnemies.FindAll(enemy => enemy.IsMovementEnded);
+            foreach (var data in enemyData)
+            {
+                RemoveEnemy(data.Enemy);
+            }
         }
 
         private void CreateEnemyUnits()
@@ -43,11 +47,20 @@ namespace BoardDefenceGame.Manager
                 return;
             }
             var enemy = CreateEnemyUnit();
+            enemy.OnEnemyUnitDead += RemoveEnemy;
             var line = boardPresenter.GetRandomLine();
             var tile = line.GetLastTile();
             enemy.transform.position = tile.GetTilePosition();
             enemy.SetIndex(tile.GetLineIndex(), tile.GetTileIndex());
+            tile.AddEnemyUnit(enemy);
             movableEnemies.Add(new EnemyMoveData{Enemy = enemy, MoveStep = 0});
+        }
+
+        private void RemoveEnemy(EnemyUnitPresenter enemyPresenter)
+        {
+            var enemy = movableEnemies.Find(movableEnemy => movableEnemy.Enemy == enemyPresenter);
+            enemyPresenter.OnEnemyUnitDead -= RemoveEnemy;
+            movableEnemies.Remove(enemy);
         }
 
         private EnemyUnitPresenter CreateEnemyUnit()
@@ -87,6 +100,7 @@ namespace BoardDefenceGame.Manager
             enemy.SetPosition(newPosition);
             if (movableEnemy.MoveStep >= 1)
             {
+                currentTile.RemoveEnemyUnit(enemy);
                 if(currentTile.GetTileIndex() == 0)
                 {
                     movableEnemy.IsMovementEnded = true;
@@ -94,6 +108,7 @@ namespace BoardDefenceGame.Manager
                 }
                 else
                 {
+                    nextTile.AddEnemyUnit(enemy);
                     enemy.SetIndex(nextTile.GetLineIndex(), nextTile.GetTileIndex());
                     movableEnemy.MoveStep = 0;
                 }

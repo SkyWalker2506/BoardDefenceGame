@@ -15,6 +15,7 @@ namespace BoardDefenceGame.DependencyInjection
         [SerializeField] private LevelData[] levelData;
 
         [Provide] private LevelManager ProvideLevelManager() => FindObjectOfType<LevelManager>();
+        [Provide] private DefenceUnitPlacementManager ProvideDefenceUnitPlacementManager() => FindObjectOfType<DefenceUnitPlacementManager>();
         [Provide] private BoardPresenter ProvideBoardPresenter() => FindObjectOfType<BoardPresenter>();
         [Provide] private DefenceUnitPanelPresenter ProvideDefenceUnitPanelPresenter() => FindObjectOfType<DefenceUnitPanelPresenter>();
         [Provide] private EnemyUnitManager ProvideEnemyUnitManager() => FindObjectOfType<EnemyUnitManager>();

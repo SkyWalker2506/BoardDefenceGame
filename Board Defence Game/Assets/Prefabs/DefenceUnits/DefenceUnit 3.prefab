@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 968406222696279442, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: model.<Direction>k__BackingField
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3145323868307468690, guid: 917305af47ba4f94a93a77a04ef6a6a8, type: 3}
       propertyPath: m_Name

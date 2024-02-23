@@ -9,6 +9,7 @@ namespace BoardDefenceGame.MVP.Model
     public class EnemyUnitModel : IUnitModel
     {
         [field:SerializeField] public float Health { get; private set; }
+        public Observable<float> CurrentHealth { get; } = new();
         [field:SerializeField] public float Speed { get; private set; }
         
         public int TileIndex { get; set; }

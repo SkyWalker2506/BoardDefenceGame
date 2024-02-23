@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BoardDefenceGame.MVP.Presenter;
 using BoardDefenceGame.UI.MVP.Presenter;
 using DependencyInjection;
@@ -9,7 +10,7 @@ namespace BoardDefenceGame.Manager
     {
         [Inject] private DefenceUnitPanelPresenter defenceUnitPanelPresenter;
         [Inject] private BoardPresenter boardPresenter;
-
+        [HideInInspector] public List<DefenceUnitPresenter> PlacedDefenceUnits = new ();
         private void Update()
         {
             if (!defenceUnitPanelPresenter.IsAnySelected())
@@ -27,18 +28,25 @@ namespace BoardDefenceGame.Manager
                             return;
                         }
                         DefenceUnitPresenter defenceUnit = defenceUnitPanelPresenter.GetSelectedDefenceUnit();
-                        tile.SetDefenceUnit(defenceUnit);
-                        CreateDefenceUnit(defenceUnit, tile.GetTilePosition());
+                        CreateDefenceUnit(defenceUnit, tile);
                         defenceUnitPanelPresenter.OnSelectedUnitPlaced();
                     }
                 }
             }
         }
 
-        private void CreateDefenceUnit(DefenceUnitPresenter defenceUnit, Vector3 tilePosition)
+        private void CreateDefenceUnit(DefenceUnitPresenter defenceUnit, TilePresenter tile)
         {
-            var unit= Instantiate(defenceUnit);
-            unit.SetPosition(tilePosition);
+            var unit = Instantiate(defenceUnit);
+            unit.SetIndex(tile.GetLineIndex(), tile.GetTileIndex());
+            unit.SetPosition(tile.GetTilePosition());
+            tile.SetDefenceUnit(unit);
+            PlacedDefenceUnits.Add(unit);
+        }
+
+        public List<DefenceUnitPresenter> GetPlacedDefenceUnits()
+        {
+            return PlacedDefenceUnits;
         }
     }
 }
